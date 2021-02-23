@@ -39,4 +39,6 @@
 
 15) SELECT x.Name , AVG(Price) FROM Manufacturers AS x INNER JOIN Products ON x.Code=Products.Manufacturer GROUP BY x.Name
 
-16) 
+16)
+
+17) insert into Products values (11, 'Loudspeakers', 70, 2);
