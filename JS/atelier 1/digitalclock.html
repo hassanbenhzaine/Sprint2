@@ -1,0 +1,60 @@
+<div class="fulltime">
+	<div id="time"></div>
+	<div id="nightorday"></div>
+</div>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .fulltime{
+    	color:#17d3fd;
+    	font-size:80px;
+    }
+    .fulltime *{
+    	display:inline-block;
+    }
+</style>
+<script>
+    let getTime = function(){
+
+    // Assigning predefined JS Date method to a new variable to work with
+    let myDate = new Date(),
+    startH = myDate.getHours(),
+    startM = myDate.getMinutes(),
+    startS = myDate.getSeconds(),
+    nightorday;
+
+    // Add 0 to each time component in the beggining if its under 10
+    if (startH < 10)  startH = '0' + startH;
+    if (startM < 10)  startM = '0' + startM;
+    if (startS < 10)  startS = '0' + startS;
+
+    if (startH > 12) {
+        startH -= 12;
+        nightorday = 'PM';
+    } else{
+        nightorday = 'AM';
+    }
+    if(startH == 0){
+        startH = 12;
+    }
+    
+
+    // Print result to element with id "time"
+    document.getElementById("time").innerHTML = `${startH}:${startM}:${startS} ${nightorday}`;
+
+    // Is it night or day?
+    // (startH > 12) ? document.getElementById('nightorday').innerHTML='PM':document.getElementById('nightorday').innerHTML='AM'; 
+    setTimeout('getTime()',1000); 
+	};
+    getTime();
+    // call getTime function every half second
+    	
+</script>
